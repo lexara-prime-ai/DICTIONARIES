@@ -1,4 +1,4 @@
-user_permissions: [int, str] = {
+user_roles: [int, str] = {
     0: "ADMIN",
     1: "EDITOR",
     2: "USER"
@@ -8,13 +8,20 @@ ADMIN = ["Read", "Write", "Delete"]
 EDITOR = ["Read", "Write"]
 USER = ["Read"]
 
+roles = []
+
 
 def display_permissions(user_role: str):
-    if user_role.upper() == user_permissions.get(0):
-        print(f"User roles: {ADMIN}")
-    elif user_role.upper() == user_permissions.get(1):
-        print(f"User roles: {EDITOR}")
-    elif user_role.upper() == user_permissions.get(2):
-        print(f"User roles: {USER}")
-    else:
-        print(f"User roles: {USER}")
+    for i in range(0, len(user_roles)):
+        roles.append(user_roles.get(i))
+
+    display_roles(user_role, roles)
+    # print(f"Available roles: {roles}")
+
+
+def display_roles(user_role: str, selected_user_roles: [str]):
+    for i in range(0, len(selected_user_roles)):
+        if user_role == selected_user_roles[i]:
+            print(f"{selected_user_roles[i]}")
+
+            print(f"Something{selected_user_roles}")
